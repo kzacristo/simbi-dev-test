@@ -60,15 +60,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Relation: A user can have many loans.
-     *
-     * @return HasMany
-     */
-    public function loans(): HasMany
-    {
-        return $this->hasMany(Loan::class);
-    }
+    // /**
+    //  * Relation: A user can have many loans.
+    //  *
+    //  * @return HasMany
+    //  */
+    // public function loans(): HasMany
+    // {
+    //     return $this->hasMany(Loan::class);
+    // }
 
     /**
      * @return UserFactory

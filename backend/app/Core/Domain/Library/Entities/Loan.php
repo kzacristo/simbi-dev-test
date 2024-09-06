@@ -29,6 +29,10 @@ final class Loan extends Entity
      * @var ?DateTime $returDate
      */
     public ?DateTime $returnDate;
+       /**
+     * @var ?string $status
+     */
+    public ?string $status;
 
     /**
      * @param ?string $id
@@ -36,6 +40,7 @@ final class Loan extends Entity
      * @param ?string $bookId
      * @param ?DateTime $loanDate
      * @param ?DateTime $returnDate
+     * @param ?string $status
      */
 
     public function __construct(
@@ -43,13 +48,19 @@ final class Loan extends Entity
         ?string $userId = null,
         ?string $bookId = null,
         ?DateTime $loanDate = null,
-        ?DateTime $returnDate = null
+        ?DateTime $returnDate = null,
+        ?string $status = null,
+        ?DateTime $createdAt = null,
+        ?DateTime $updatedAt = null,
     ) {
         parent::__construct($id);
         $this->userId = $userId;
         $this->bookId = $bookId;
         $this->loanDate = $loanDate;
         $this->returnDate = $returnDate;
+        $this->status = $status;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
     }
 
     /**

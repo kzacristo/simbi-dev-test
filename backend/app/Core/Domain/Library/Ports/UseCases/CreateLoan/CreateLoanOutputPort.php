@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Domain\Library\Ports\UseCases\CreatLoan;
+namespace App\Core\Domain\Library\Ports\UseCases\CreateLoan;
 
 use App\Core\Common\Ports\ViewModel;
 

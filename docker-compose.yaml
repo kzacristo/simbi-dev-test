@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   frontend:
     build:
@@ -48,8 +46,8 @@ services:
       POSTGRES_PASSWORD: dev
     volumes:
       - ./backend/.docker/database:/var/lib/postgresql/data
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
     healthcheck:
       test: ["CMD", "pg_isready", "-q", "-d", "database", "-U", "dev"]
       retries: 3

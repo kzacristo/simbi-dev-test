@@ -13,8 +13,20 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->foreignUuid('user_id');
-            $table->foreignUuid('book_id');
+            $table->uuid("user_id");
+            $table
+                ->foreign("user_id")
+                ->references("id")
+                ->on("users")
+                ->onUpdate("CASCADE")
+                ->onDelete("CASCADE");
+            $table->uuid("book_id");
+            $table
+                ->foreign("book_id")
+                ->references("id")
+                ->on("books")
+                ->onUpdate("CASCADE")
+                ->onDelete("CASCADE");
             $table->date('loan_date');
             $table->date('return_date')->nullable();
             $table->enum('status', ['loaned', 'returned'])->default('loaned');
@@ -27,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('loans');
     }
 };

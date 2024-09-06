@@ -26,9 +26,11 @@ class LoanFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first();
+
         return [
             'id' => $this->faker->uuid(),
-            'user_id' => User::inRandomOrder()->first()->id,
+            'user_id' => $user->id,
             'book_id' => Book::inRandomOrder()->first()->id,
             'loan_date' => $this->faker->dateTimeBetween('-1 month', 'now'),
             'return_date' => $this->faker->optional()->dateTimeBetween('now', '+1 month'),

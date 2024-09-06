@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Core\Domain\Library\Ports\UseCases\CreatLoan\{CreateLoanRequestModel, CreateLoanUseCase};
+use App\Core\Domain\Library\Ports\UseCases\CreateLoan\{CreateLoanRequestModel, CreateLoanUseCase};
 use App\Http\Requests\CreateLoanRequest;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +33,7 @@ class CreateLoanController extends Controller
      */
 
     public function __invoke(CreateLoanRequest $request){
-        $viewModel = $this->useCase->execute(new CreateLoanRequestModel($request->validate()));
+        $viewModel = $this->useCase->execute(new CreateLoanRequestModel($request->validated()));
         return response()->json($viewModel->getResponse(), Response::HTTP_CREATED);
     }
 }

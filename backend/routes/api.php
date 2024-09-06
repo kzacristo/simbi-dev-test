@@ -3,9 +3,11 @@
 use App\Http\Controllers\CreateAuthorController;
 use App\Http\Controllers\CreateBookController;
 use App\Http\Controllers\CreateLoanController;
+use App\Http\Controllers\CreateUserController;
 use App\Http\Controllers\ListAllBooksController;
+use App\Http\Controllers\ListAllLoansController;
+use App\Http\Controllers\ListAllUsersController;
 use App\Http\Controllers\ListBooksByAuthorController;
-use App\Http\Controllers\LoanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +39,15 @@ Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
 
 Route::group(["prefix" => "loans"], function(){
     Route::post("",CreateLoanController::class);
+    Route::get("",ListAllLoansController::class);
 });
+
+
+Route::group(["prefix" => "users"], function(){
+    Route::post("",CreateUserController::class);
+    Route::get("",ListAllUsersController::class);
+});
+
 
 // Route::group(["prefix" => "loans"], function(){
 //     Route::get("{id}/user", [LoanController::class, 'searchByUser']);

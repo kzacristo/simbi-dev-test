@@ -45,11 +45,17 @@ class Loan extends Model
         'return_date' => 'date',
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function book()
     {
         return $this->belongsTo(Book::class);

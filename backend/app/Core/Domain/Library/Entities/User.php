@@ -40,7 +40,8 @@ final class User extends Entity
         ?string $email = null,
         ?string $password = null,
         ?DateTime $createdAt = null,
-        ?DateTime $updatedAt = null
+        ?DateTime $updatedAt = null,
+
     ) {
         parent::__construct($id);
         $this->name = $name;

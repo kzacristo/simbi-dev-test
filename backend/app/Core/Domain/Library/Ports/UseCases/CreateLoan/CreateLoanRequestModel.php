@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Core\Domain\Library\Ports\UseCases\CreatLoan;
+namespace App\Core\Domain\Library\Ports\UseCases\CreateLoan;
+
+use Nette\Utils\Random;
 
 final class CreateLoanRequestModel
 {
@@ -32,14 +34,14 @@ final class CreateLoanRequestModel
 
     public function getLoanDate(): string|null
     {
-        return $this->attributes['loan_data'] ?? null;
+        return $this->attributes['loan_date'] ?? null;
     }
 
     /**
      * @return string|null
      */
 
-    public function getReturDate(): string|null
+    public function getReturnDate(): string|null
     {
         return $this->attributes['return_date'] ?? null;
     }
@@ -50,6 +52,8 @@ final class CreateLoanRequestModel
 
     public function getStatus(): string|null
     {
-        return $this->attributes['status'] ?? null;
+        $status = ['loaned', 'returned'];
+        return $this->attributes[$status[array_rand($status)]] ?? null;
+        // return $this->attributes['status'] ?? null;
     }
 }
